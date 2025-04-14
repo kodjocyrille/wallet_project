@@ -2,13 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LoginController extends GetxController {
+class AuthController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   var isLoading = false.obs;
 
   Future<void> login() async {
+    print(Get.height);
     if (emailController.text.isEmpty || passwordController.text.isEmpty) {
       Get.snackbar(
         "Erreur",

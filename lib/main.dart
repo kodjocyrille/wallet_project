@@ -4,8 +4,9 @@ import 'package:get/get.dart';
 import 'package:wallet_project/modules/auth/views/login.dart';
 import 'package:wallet_project/themeData.dart';
 
-import 'modules/auth/binding/login_binding.dart';
-import 'modules/auth/controller/login_controller.dart';
+import 'modules/auth/binding/auth_binding.dart';
+import 'modules/auth/controller/auth_controller.dart';
+import 'package:wallet_project/routes/app_pages.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,14 +25,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeService.lightTheme,
       themeMode: ThemeMode.light,
-      initialRoute: '/login',
-      getPages: [
-        GetPage(
-          name: '/login',
-          page: () => LoginView(),
-          binding: LoginBinding(),
-        ),
-      ],
+      initialRoute: AppPages.initial,
+      getPages: AppPages.routes,
       debugShowCheckedModeBanner: false,
     );
   }

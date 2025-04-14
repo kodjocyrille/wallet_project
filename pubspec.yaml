@@ -64,7 +64,7 @@ flutter:
     - assets/logo/Pochi.png
     - assets/logo/Pochi_.png
     - assets/logo/Wallet-pochi.png
-    - assets/logo/pochi_wallet.png
+    - assets/logo/pochi_white_.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
@@ -89,7 +89,6 @@ flutter:
           weight: 600
         - asset: assets/fonts/Poppins-Bold.ttf
           weight: 700
-        - asset: assets/fonts/Poppins-ExtraBold.ttf
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf

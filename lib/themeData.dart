@@ -26,7 +26,8 @@ class ThemeService {
     textTheme: TextTheme(
       bodyMedium: TextStyle(
         fontSize: 16,
-        color: Color(0xff00242B),
+        // color: Color(0xff004856),
+        color: Colors.grey,
         fontWeight: FontWeight.bold,
         fontFamily: 'Poppins',
       ),
