@@ -86,13 +86,15 @@ class RegisterView extends GetView<AuthController> {
                 children: [
                   SizedBox(height: 20),
                   TextFieldWidget(label: "Nom et prénom"),
-                  SizedBox(height: 20),
+
                   TextFieldWidget(label: "Email"),
-                  SizedBox(height: 20),
+
+                  TextFieldWidget(label: "Numéro de téléphone"),
+
                   TextFieldWidget(label: "Mot de passe"),
-                  SizedBox(height: 20),
+
                   TextFieldWidget(label: "Confirmer le mot de passe"),
-                  SizedBox(height: Get.height * 0.05),
+
                   Obx(
                     () =>
                         controller.isLoading.value

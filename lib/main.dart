@@ -6,11 +6,13 @@ import 'package:wallet_project/utils/themeData.dart';
 
 import 'modules/auth/binding/auth_binding.dart';
 import 'modules/auth/controller/auth_controller.dart';
+import 'provider/firebase_provider.dart';
 import 'package:wallet_project/routes/app_pages.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await Get.putAsync(() => FirebaseProvider().init());
   // Get.put(LoginController());
   runApp(MyApp());
 }
