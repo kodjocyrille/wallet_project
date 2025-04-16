@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wallet_project/modules/auth/views/login.dart';
-import 'package:wallet_project/themeData.dart';
+import 'package:wallet_project/utils/themeData.dart';
 
 import 'modules/auth/binding/auth_binding.dart';
 import 'modules/auth/controller/auth_controller.dart';

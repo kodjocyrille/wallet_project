@@ -13,7 +13,9 @@ class LoginView extends GetView<AuthController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: true,
+        elevation: 10,
+        centerTitle: true,
+        automaticallyImplyLeading: false,
         backgroundColor: Get.theme.primaryColor,
       ),
       body: SingleChildScrollView(
@@ -119,6 +121,7 @@ class LoginView extends GetView<AuthController> {
                       text: 'Vous n\'avez pas de compte ?',
                       style: TextStyle(
                         // Couleur du texte normal
+                        fontSize: Get.width * 0.035,
                       ),
                       children: [
                         TextSpan(

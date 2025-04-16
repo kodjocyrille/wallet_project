@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wallet_project/modules/global_widgets/button_widget.dart';
 import 'package:wallet_project/modules/global_widgets/textformfield.dart';
+import 'package:wallet_project/routes/app_routes.dart';
 import '../controller/auth_controller.dart';
 
 class RegisterView extends GetView<AuthController> {
@@ -13,6 +14,7 @@ class RegisterView extends GetView<AuthController> {
     return Scaffold(
       // appBar: AppBar(
       //   automaticallyImplyLeading: true,
+      //   title: Text("Créer un compte"),
 
       //   backgroundColor: Get.theme.primaryColor,
       // ),
@@ -20,11 +22,39 @@ class RegisterView extends GetView<AuthController> {
         child: Column(
           children: [
             Stack(
-              alignment: Alignment.topLeft,
               children: [
-                Expanded(
+                Container(
+                  height: Get.height * 0.3,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Get.theme.colorScheme.primary,
+                        Get.theme.colorScheme.secondary,
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    // boxShadow: [
+                    //   BoxShadow(
+                    //     color: Colors.grey.shade400, // Couleur de l'ombre
+                    //     spreadRadius: 2, // Étend l'ombre
+                    //     blurRadius: 10, // Flou de l'ombre
+                    //     offset: Offset(3, 3), // Décalage de l'ombre (X, Y)
+                    //   ),
+                    // ],
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(35),
+                      bottomRight: Radius.circular(35),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  // bottom: 250,
+                  // left: 10,
+                  bottom: Get.height * 0.1,
+                  left: Get.width * 0.03,
                   child: Image.asset(
-                    'assets/logo/pochi_white_.png',
+                    'assets/logo/Pochi_.png',
                     // height: 200,
                     // width: 250,
                     height: Get.height * 0.2,
@@ -35,12 +65,12 @@ class RegisterView extends GetView<AuthController> {
                 Positioned(
                   // bottom: 290,
                   // left: 70,
-                  bottom: Get.height * 0.01,
-                  left: Get.width * 0.0,
+                  bottom: Get.height * 0.16,
+                  left: Get.width * 0.2,
                   child: Text(
                     "Votre poche notre soucis",
                     style: TextStyle(
-                      fontSize: Get.textScaleFactor * 20,
+                      fontSize: Get.textScaleFactor * 24,
                       fontWeight: FontWeight.bold,
                       color: Get.theme.colorScheme.secondary,
                     ),
@@ -60,6 +90,8 @@ class RegisterView extends GetView<AuthController> {
                   TextFieldWidget(label: "Email"),
                   SizedBox(height: 20),
                   TextFieldWidget(label: "Mot de passe"),
+                  SizedBox(height: 20),
+                  TextFieldWidget(label: "Confirmer le mot de passe"),
                   SizedBox(height: Get.height * 0.05),
                   Obx(
                     () =>
@@ -96,7 +128,7 @@ class RegisterView extends GetView<AuthController> {
                                 ..onTap = () {
                                   // Action quand on clique sur "Créer un compte"
                                   // Get.back();
-                                  // Get.toNamed(Routes.ACCOUNT_CHOICE);
+                                  Get.toNamed(AppRoutes.login);
                                 },
                         ),
                       ],
