@@ -81,60 +81,84 @@ class RegisterView extends GetView<AuthController> {
 
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(height: 20),
-                  TextFieldWidget(label: "Nom et prénom"),
-
-                  TextFieldWidget(label: "Email"),
-
-                  TextFieldWidget(label: "Numéro de téléphone"),
-
-                  TextFieldWidget(label: "Mot de passe"),
-
-                  TextFieldWidget(label: "Confirmer le mot de passe"),
-
-                  Obx(
-                    () =>
-                        controller.isLoading.value
-                            ? CircularProgressIndicator()
-                            : ButtonWidget(
-                              textColor: Get.theme.scaffoldBackgroundColor,
-                              height: 45,
-                              color: Get.theme.primaryColor,
-                              width: Get.width,
-                              text: "Créer un compte",
-                              onPressed: () => controller.login(),
-                            ),
-                  ),
-                  SizedBox(height: Get.height * 0.01),
-                  Text.rich(
-                    TextSpan(
-                      text: 'Vous n\'avez pas de compte ?',
-                      style: TextStyle(
-                        // Couleur du texte normal
-                      ),
-                      children: [
-                        TextSpan(
-                          text: 'Créer un compte',
-                          style: TextStyle(
-                            color: Get.theme.colorScheme.primary,
-                            fontWeight: FontWeight.bold,
-                            decoration: TextDecoration.underline,
-                            decorationColor: Get.theme.colorScheme.primary,
-                            // decorationColor: Appcolor.primary,
-                          ),
-                          recognizer:
-                              TapGestureRecognizer()
-                                ..onTap = () {
-                                  // Action quand on clique sur "Créer un compte"
-                                  // Get.back();
-                                  Get.toNamed(AppRoutes.login);
-                                },
-                        ),
-                      ],
+              child: Form(
+                key: controller.registerformKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 20),
+                    TextFieldWidget(
+                      label: "Nom et prénom",
+                      validator:
+                          (input) =>
+                              input!.length < 3
+                                  ? "Plus de 3 caractères sont nécessaires"
+                                  : null,
                     ),
+                    TextFieldWidget(
+                      label: "Email",
+                      onSaved: (input) => controller.email.value = input!,
+                      validator:
+                          (input) =>
+                              !input!.contains('@')
+                                  ? "Adresse email non valide".tr
+                                  : null,
+                    ),
+
+                    TextFieldWidget(label: "Numéro de téléphone"),
+
+                    TextFieldWidget(
+                      label: "Mot de passe",
+                      onSaved: (input) => controller.password.value = input!,
+                      validator:
+                          (input) =>
+                              input!.length < 3 ? "Plus de 3 caractères" : null,
+                    ),
+
+                    TextFieldWidget(label: "Confirmer le mot de passe"),
+                  ],
+                ),
+              ),
+            ),
+
+            Obx(
+              () =>
+                  controller.isLoading.value
+                      ? CircularProgressIndicator()
+                      : ButtonWidget(
+                        textColor: Get.theme.scaffoldBackgroundColor,
+                        height: 45,
+
+                        color: Get.theme.primaryColor,
+                        width: Get.width - 20,
+                        text: "Créer un compte",
+                        onPressed: () => controller.register,
+                      ),
+            ),
+            SizedBox(height: Get.height * 0.01),
+            Text.rich(
+              TextSpan(
+                text: 'Vous n\'avez pas de compte ?',
+                style: TextStyle(
+                  // Couleur du texte normal
+                ),
+                children: [
+                  TextSpan(
+                    text: 'Créer un compte',
+                    style: TextStyle(
+                      color: Get.theme.colorScheme.primary,
+                      fontWeight: FontWeight.bold,
+                      decoration: TextDecoration.underline,
+                      decorationColor: Get.theme.colorScheme.primary,
+                      // decorationColor: Appcolor.primary,
+                    ),
+                    recognizer:
+                        TapGestureRecognizer()
+                          ..onTap = () {
+                            // Action quand on clique sur "Créer un compte"
+                            // Get.back();
+                            Get.toNamed(AppRoutes.login);
+                          },
                   ),
                 ],
               ),

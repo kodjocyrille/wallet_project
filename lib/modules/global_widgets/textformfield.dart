@@ -9,12 +9,14 @@ class TextFieldWidget extends StatelessWidget {
   final bool? isPassword;
   final TextInputType? keyboardType;
   final IconData? icon;
+  final FormFieldSetter<String>? onSaved;
   final String? Function(String?)? validator;
 
   const TextFieldWidget({
     super.key,
     this.controller,
     required this.label,
+    this.onSaved,
     this.isPassword = false,
     this.keyboardType = TextInputType.text,
     this.icon,
